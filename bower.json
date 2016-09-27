@@ -1,0 +1,24 @@
+{
+  "name": "ember-app-kit",
+  "dependencies": {
+    "handlebars": "~1.3.0",
+    "jquery": "~1.9.1",
+    "qunit": "~1.12.0",
+    "ember-qunit": "https://github.com/rpflorence/ember-qunit.git#master",
+    "ember": "~1.8.1",
+    "ember-data": "~1.0.0-beta.12",
+    "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#master",
+    "ic-ajax": "~2.0.1",
+    "ember-testing-httpRespond": "~0.1.1",
+    "loader.js": "git://github.com/stefanpenner/loader.js",
+    "foundation": "5.5.1",
+    "fastclick": "~1.0.3",
+    "modernizr": "~2.7.2",
+    "ember-droplet": "0.8.4",
+    "velocity": "~1.0.0"
+  },
+  "resolutions": {
+    "ember": "~1.7.0",
+    "ember-data": "~1.0.0-beta.12"
+  }
+}

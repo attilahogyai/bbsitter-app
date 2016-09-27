@@ -1,0 +1,9 @@
+<div class="row">
+<div class="columns small-12 box-shadow">
+{{#week-events class="row" date=actDate new="createEvent" next="jumpToNext" prev="jumpToPrev" calendarSetup=calendarSetup}}
+{{#each weekList}}
+{{view "event" event=this}}
+{{/each}}
+{{/week-events}}
+</div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "predef": {
+    "document": true,
+    "window": true,
+    "location": true,
+    "setTimeout": true,
+    "Ember": true,
+    "Em": true,
+    "DS": true,
+    "$": true
+  },
+  "white": true,
+  "smarttabs":false,
+  "esnext":true
+}

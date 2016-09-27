@@ -1,0 +1,120 @@
+<div class="row">
+<div class="small-12 columns">
+<div class="calendar-header">
+<div class="row">
+
+<div class="small-12 columns text-center content-panel">
+{{#open-close status=false opentextCode="/general/legend"}}
+    
+        <div class="row">
+            <div class="small-4 columns text-center">
+            <div class="panel event-panel-1">
+                <p>Függő</p>
+            </div>
+            </div>
+            <div class="small-4 columns text-center">
+            <div class="panel event-panel-20">
+                <p>Elfogadva</p>
+            </div>
+            </div>
+            <div class="small-4 columns text-center">
+            <div class="panel event-panel-10">
+                <p>Visszautasítva</p>
+            </div>
+            </div>
+            <div class="small-6 columns text-center">
+            <div class="panel event-panel-30">
+                <p>Megvalósult</p>
+            </div>
+            </div>
+            <div class="small-6 columns text-center">
+            <div class="panel event-panel-40">
+                <p>Meghiúsult</p>
+            </div>
+            </div> 
+        </div>
+{{/open-close}}
+    </div>
+    
+    <div class="small-12 columns text-center">
+        <h5>{{month}}</h5>
+    </div>
+    <div class="small-4 columns text-center">
+    <a href="#" {{action 'prev'}}><i {{bind-attr class=":fa :fa-3x prevProcessing:fa-spin prevProcessing:fa-spinner:fa-chevron-circle-left"}}></i></a>
+    </div>
+    <div class="small-4 columns text-center">
+        <h2>{{date-f startOfWeek 'D'}} - {{date-f endOfWeek 'D'}}</h2>
+    </div>
+    <div class="small-4 columns text-center">
+    <a href="#" {{action 'next'}}><i {{bind-attr class=":fa :fa-3x nextProcessing:fa-spin nextProcessing:fa-spinner:fa-chevron-circle-right"}}></i></a>
+    </div>    
+    <div class="small-12 columns text-center">
+        <h4>{{weekStr}}</h4>
+    </div>
+
+</div>              
+</div>          
+</div>      
+</div>	
+<div class="row">
+    <div id='calendar' class="small-12 columns">
+    <div class="box-shadow">
+        <div >
+            <div class="week-time-col columns text-right calendar-panel">
+                <p class="time">
+                &nbsp;
+                </p>
+            </div>
+            {{#each day in weekDays}}
+                <div class="week-day-header columns text-left calendar-panel" id="header_{{unbound this}}">
+                {{!#link-to 'pulzer.day' dateS}}
+                {{#if-eval 'options.data.keywords["day"].date.isSame(moment(),"day")'}}
+                <p class="today">{{date-f day.date 'D'}}<small>{{date-f day.date 'dd'}}</small></p>
+                {{else}}
+                <p>{{date-f day.date 'D'}}<small>{{date-f day.date 'dd'}}</small></p>
+                {{/if-eval}}
+                {{!/link-to}}
+                </div>
+            {{/each}}
+        </div>
+        {{#each hours in hoursOfDay}}
+            <div id="h{{unbound hours.hour}}_00">
+                <div class="week-time-col columns text-right calendar-panel" id="h{{unbound hours.hour}}_00_time">
+                    <p class="time">
+						{{loc-hour hours.hour 0}}
+                    </p>
+                </div>
+                {{#each DAY in weekDays}}
+                    <div class="week-day-col columns text-left calendar-panel" id="{{unbound DAY.dateS}}h{{unbound ../hours.hour}}_00_event">
+							{{#if-eval 'this.isOpen(options.data.keywords["DAY"].date, options.data.keywords["hours"].hour)'}}
+                            <p class="add-todo">
+                            <a href='#' {{action "new" DAY.date ../hours.hour "00"}}><i class="fa fa-plus-circle"></i></a>
+                            </p>
+							{{/if-eval}}
+                    </div>
+                {{/each}}
+
+            </div>
+            <div id="h{{unbound hours.hour}}_30">
+                <div class="week-time-col columns text-right calendar-panel2" id="h{{unbound hours.hour}}_30_time">
+                    <p class="time">
+                        &nbsp;
+                    </p>
+                </div>
+                {{#each DAY in weekDays}}
+                    <div class="week-day-col columns text-left calendar-panel" id="{{unbound DAY.dateS}}h{{unbound ../hours.hour}}_30_event">
+							{{#if-eval 'this.isOpen(options.data.keywords["DAY"].date, options.data.keywords["hours"].hour)'}}
+                            <p class="add-todo">
+                            <a href='#' {{action "new" DAY.date ../hours.hour "30"}}><i class="fa fa-plus-circle"></i></a>
+                            </p>
+							{{/if-eval}}
+                        
+                    </div>
+                {{/each}}
+            </div>
+
+        {{/each}}
+        {{yield}}
+    </div>
+    </div>
+</div>

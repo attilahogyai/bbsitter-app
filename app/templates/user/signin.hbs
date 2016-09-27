@@ -1,0 +1,28 @@
+<form data-abide novalidate id="signInForm" {{action "doSignIn" on="submit"}}>
+	<div class="row">
+		{{#if message}}
+		<div class="small-12 columns">
+			<div data-alert {{bind-attr class=":alert-box isSuccess:success isError:warning :message"}}>
+			{{{message}}}
+			</div>
+		</div> 				
+		{{/if}}
+		<div class="small-12 columns email-field input-wrapper">
+			<label><small class="error">{{loc-x '/general/mandatory'}}</small>
+				{{input value=email type='text' required="true" pattern="email" placeholder="/general/type_your_email"}}
+			</label>                
+		</div>
+		<div class="small-12 columns input-wrapper">
+			<label><small class="error">{{loc-x '/general/password_format_desc_text'}}</small>
+				{{input value=password type='password' placeholder="" required="true" pattern="[a-zA-Z\.0-9]{6,16}" placeholder="/general/type_your_password"}}
+			</label>
+			<a href="#" {{action 'openModal' 'user/forgot'}}>{{loc-x '/general/forgot_password'}}</a>
+		</div>
+		<div class="small-12 columns">
+			<button type="submit" class="button login-button" style="width:100%">{{loc-x '/button/signin'}}</button>
+		</div>              
+		<div class="small-12 columns padding-bottom">
+			<a rhef="#" {{action 'jumpToSignup'}}>{{loc-x '/general/not_registered_signup'}}</a>		
+		</div>              		
+ </div>
+</form>

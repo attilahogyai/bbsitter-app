@@ -1,0 +1,10 @@
+{{#if icon}}<i {{bind-attr class=titleIcon}}></i>{{/if}}{{input type="text" value=inputText placeholder=placeholder class=textStyle onEvent="keyPress" action="setValue" bubble="true" focus-out="focusOut" focus-in="focusIn" required=required}}{{#if clearIcon}}<i class="fa fa-times clearIcon" {{action 'clearText'}}></i>{{/if}}
+{{#if open}}
+<div>
+<ul>
+{{#each city in displayResult}}
+<li id="{{eval-expr 'this.itemId(options.data.view.contentIndex)'}}">{{eval-expr 'this.itemLabel(options.data.keywords.city)'}}</li>
+{{/each}}
+</ul>
+</div>
+{{/if}}
